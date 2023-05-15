@@ -1,0 +1,6 @@
+.ball {
+  border-radius: 50%;
+  position: absolute;
+  animation: bounce 1s infinite;
+  z-index: 1;
+}
