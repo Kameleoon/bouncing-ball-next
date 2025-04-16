@@ -60,29 +60,41 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@kameleoon/javascript-sdk-core@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@kameleoon/javascript-sdk-core/-/javascript-sdk-core-2.3.0.tgz#c96d5570115b1a994b1331c85f7033867a8f1fb3"
-  integrity sha512-hdazf6eJg5SCUG0tCEPzR7u6nUmx0utL+6DYQl1/69j9gpmTKVk1AYl4qZXNVmoSJhcq1FDBKqRHKiVnzG2/ew==
+"@kameleoon/javascript-sdk-core@5.9.1":
+  version "5.9.1"
+  resolved "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/javascript-sdk-core/-/javascript-sdk-core-5.9.1.tgz#15792ff39e8b3850b841bcbf59528fb5590c583c"
+  integrity sha512-pp9Q2MOYgH6RfNBXak2sJFAQkijvT07dqa7Lt/PxuqKZbi4OqRCQhFmgldPxf7QHktytzOisgLF5CBMmW4gTPQ==
   dependencies:
     crypto-js "^4.1.1"
-    ts-res "^1.1.1"
+    ts-res "^1.3.0"
 
-"@kameleoon/javascript-sdk@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@kameleoon/javascript-sdk/-/javascript-sdk-1.3.3.tgz#1b41e07e2282b7d1be61a4c3ffe81281d3538266"
-  integrity sha512-woMt0lWv6Yjn++HTfTV0kPqs0G+adgeKVs75KwqvZ4w+h8v0ApH/EaxFR8HK/+mgDkham9Yzlk16LQ7I8VQJOA==
+"@kameleoon/javascript-sdk@^4.9.1":
+  version "4.9.1"
+  resolved "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/javascript-sdk/-/javascript-sdk-4.9.1.tgz#b489593599f50a434aec6b0065718cef75aa74ba"
+  integrity sha512-ukhzJ9trPTFiSGeOUX0yjq+TelsZ4GnwkRLgLo5ycw1eCWY8Z4Id+LXE9Z8FRrf6SqSS/N9pUIhhqTzPvgLa2A==
   dependencies:
-    "@kameleoon/javascript-sdk-core" "^2.2.0"
+    "@kameleoon/javascript-sdk-core" "5.9.1"
 
-"@kameleoon/nodejs-sdk@^2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@kameleoon/nodejs-sdk/-/nodejs-sdk-2.1.4.tgz#c4843682bc4ae9beb2c8938144ac83dc427fa3dd"
-  integrity sha512-qvW7JBtxLr642jMC9q/rOUYkYpYO2pr9f2GBM/l8Qje+syc2KZo3hNKOQheEy+9IOmXKDdIkKptMBZzsH57Zhg==
+"@kameleoon/nodejs-event-source@^1.1.0":
+  version "1.1.0"
+  resolved "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/nodejs-event-source/-/nodejs-event-source-1.1.0.tgz#1a20c53e5aeceab0e14b3e3b5814bcc3ba51c492"
+  integrity sha512-3pKALgfmcL6jYKcVC/Bvyjq9pt0A8LM6dyS8qUG5wJUHqmwVc+4Y4kYH0aUy3uyTeH+98VeKyWsZN8040/gsCg==
   dependencies:
-    "@kameleoon/javascript-sdk-core" "^2.2.0"
     eventsource "^2.0.2"
-    node-fetch "2.6.1"
+
+"@kameleoon/nodejs-requester@^1.2.0":
+  version "1.2.0"
+  resolved "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/nodejs-requester/-/nodejs-requester-1.2.0.tgz#c722539ab4ecf01048f6942ae5cb8ba7f5fd6e67"
+  integrity sha512-o/WJzgHlGRVVSe/5LS026SYD0KYQ0DO7BJuGQMIPKJ7oyteMeHH+3vJ4frFOO+irUmmnckfM7DBFleX6poYn6A==
+  dependencies:
+    node-fetch "2.7.0"
+
+"@kameleoon/nodejs-sdk@^5.9.1":
+  version "5.9.1"
+  resolved "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/nodejs-sdk/-/nodejs-sdk-5.9.1.tgz#d7221496da10b4f2a72a1ec769ab22dfb8512562"
+  integrity sha512-AZg/pYTZOgdx+6rtjEyD1vb6MGbuzQQBgHMPN1pGl5jOCcWxjQqXbDQHjNNGLlmokQiArK+tL9ETBiWblKy0JA==
+  dependencies:
+    "@kameleoon/javascript-sdk-core" "5.9.1"
 
 "@next/env@13.4.2":
   version "13.4.2"
@@ -1620,10 +1632,12 @@ next@13.4.2:
     "@next/swc-win32-ia32-msvc" "13.4.2"
     "@next/swc-win32-x64-msvc" "13.4.2"
 
-node-fetch@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
-  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+node-fetch@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
+  integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
+  dependencies:
+    whatwg-url "^5.0.0"
 
 npm-run-path@^4.0.1:
   version "4.0.1"
@@ -2125,10 +2139,15 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-ts-res@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/ts-res/-/ts-res-1.1.1.tgz#9c7439de9dd12246c88621fdf98d7b52c2dbbcf0"
-  integrity sha512-mhpSnTiHdJELzr00XaXlXg9SwOEyybZieocKuF2yRrjofg2ZgNNX4diKQ775FydnpUEvif9r1Y0EVt1Lz5iJCw==
+tr46@~0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
+  integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
+
+ts-res@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/ts-res/-/ts-res-1.3.0.tgz#611d9cd1b77b89641160daa5fcb4e288125e2e92"
+  integrity sha512-mtqiREQkId+ExhM+KVpdWfTQiSNPsZPP9UlbsTP6KjOrdcdCmBhP8gbdWLFO32h00bCXa7rM7+Rd+lEPgWGi/g==
 
 tsconfig-paths@^3.14.1:
   version "3.14.2"
@@ -2204,6 +2223,19 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+webidl-conversions@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
+  integrity sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
+
+whatwg-url@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
+  integrity sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==
+  dependencies:
+    tr46 "~0.0.3"
+    webidl-conversions "^3.0.0"
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"

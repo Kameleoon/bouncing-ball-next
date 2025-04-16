@@ -1,13 +1,15 @@
 import { BallsDashboard } from "@/components/BallsDashboard";
 import styles from "@/styles/Home.module.css";
-import { KameleoonClient, KameleoonUtils } from "@kameleoon/nodejs-sdk";
+import { KameleoonClient } from "@kameleoon/nodejs-sdk";
 import { NextPageContext } from "next";
+import { KameleoonEventSource } from "@kameleoon/nodejs-event-source";
+import { KameleoonRequester } from "@kameleoon/nodejs-requester";
+import { NextVisitorCodeManager } from "@/components/visitorCodeManager";
 
-const SITE_CODE = "0fpmcg34lg";
-const DOMAIN =
-  "https://app.netlify.com/sites/thunderous-speculoos-e7fe29/overview";
+const SITE_CODE = "0byr9yahtt";
+const featureKey = "bb_demo";
 
-type Props = {
+export type Props = {
   ballsAmount: number;
 };
 
@@ -16,7 +18,7 @@ export default function Home({ ballsAmount }: Props) {
     <>
       <main className={styles.main}>
         <p className={styles.title}>Amount of balls: {ballsAmount}</p>
-        <BallsDashboard />
+        <BallsDashboard ballsAmount={ballsAmount} />
       </main>
     </>
   );
@@ -30,7 +32,19 @@ async function initClient(): Promise<KameleoonClient> {
     return client;
   }
 
-  client = new KameleoonClient({ siteCode: SITE_CODE });
+  client = new KameleoonClient({
+    siteCode: SITE_CODE,
+    credentials: {
+      clientId: "client_id",
+      clientSecret: "client_secret",
+    },
+    externals: {
+      visitorCodeManager: new NextVisitorCodeManager(),
+      eventSource: new KameleoonEventSource(),
+      requester: new KameleoonRequester(),
+    },
+  });
+
   await client.initialize();
 
   return client;
@@ -48,29 +62,25 @@ export async function getServerSideProps(context: NextPageContext) {
   const client = await initClient();
 
   // -- Get the visitor code from the Kameleoon cookie
-  const visitorCode = KameleoonUtils.getVisitorCode({
-    domain: DOMAIN,
+  const visitorCode = client.getVisitorCode({
     request: req,
     response: res,
   });
 
-  // -- Trigger an experiment
-  const experimentId = 197421;
-  const variationId = client.triggerExperiment(visitorCode, experimentId);
+  // -- Get the feature flag variation
+  const variation = client.getVariation({
+    visitorCode,
+    featureKey,
+    track: false,
+  });
 
-  // -- Get the amount of balls depending on the variation
+  // -- Get feature flag variables from the variation
+  const variables = variation.variables;
+  const variable = variables.get("balls_amount");
+
   let ballsAmount = 0;
-
-  switch (variationId) {
-    case 0:
-      ballsAmount = 5;
-      break;
-    case 848374:
-      ballsAmount = 10;
-      break;
-    case 848375:
-      ballsAmount = 20;
-      break;
+  if (variable) {
+    ballsAmount = variable.value as number;
   }
 
   return {

@@ -1,6 +1,6 @@
 {
   "name": "bouncing-ball-next",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@kameleoon/javascript-sdk": "^1.3.3",
-    "@kameleoon/nodejs-sdk": "^2.1.4",
+    "@kameleoon/javascript-sdk": "^4.9.1",
+    "@kameleoon/nodejs-sdk": "^5.9.1",
+    "@kameleoon/nodejs-requester": "^1.2.0",
+    "@kameleoon/nodejs-event-source": "^1.1.0",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
